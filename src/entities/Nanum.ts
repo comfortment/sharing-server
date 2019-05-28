@@ -7,6 +7,8 @@ interface BaseProduct {
   description?: string;
   payAt: "advanced" | "deferred";
   title: string;
+  star: boolean;
+  processState: "recruiting" | "paid" | "processing" | "done"
 }
 
 export interface BundleProduct extends BaseProduct {
