@@ -11,30 +11,17 @@ import joinNanum from "./joinNanum";
 import changeNanumState from "./changeNanumState";
 
 
-class NanumRouter {
-  private router: Router;
+const NanumRouter = Router();
 
-  public constructor() {
-    this.router = Router();
-    this.addResource();
-  }
+NanumRouter.get('/', getNanumList);
+NanumRouter.post('/', createNanum);
+NanumRouter.get('/:nanum_id', getNanumDetail);
+NanumRouter.patch('/stared/:post_id/:user_id', changeStarState);
+NanumRouter.get('/stared/:user_id', getStaredNanumList);
+NanumRouter.get('/raised/:user_id', getOwnedNanumList);
+NanumRouter.get('/joined/:user_id', getJoinedNanumList);
+NanumRouter.patch('/joined/:post_id/:user_id', joinNanum);
+NanumRouter.patch('/raised/:user_id/state', changeNanumState);
 
-  public getExpressRouter() {
-    return this.router;
-  }
-
-  private addResource() {
-    this.router.get('/nanum', getNanumList);
-    this.router.post('/nanum', createNanum);
-    this.router.get('/nanum/:nanum_id', getNanumDetail);
-    this.router.patch('/nanum/stared/:post_id/:user_id', changeStarState);
-    this.router.get('/namum/stared/:user_id', getStaredNanumList);
-    this.router.get('/nanum/raised/:user_id', getOwnedNanumList);
-    this.router.get('/nanum/joined/:user_id', getJoinedNanumList);
-    this.router.patch('/nanum/joined/:post_id/:user_id', joinNanum);
-    this.router.patch('/nanum/raised/:user_id/state', changeNanumState);
-  }
-
-}
 
 export default NanumRouter;

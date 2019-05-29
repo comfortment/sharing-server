@@ -2,6 +2,9 @@ import express from "express";
 import helmet from "helmet";
 import http from "http";
 
+import NanumRouter from "./presentaion/routers/nanum";
+
+
 class App {
   private app: express.Express;
   private server: http.Server;
@@ -12,9 +15,11 @@ class App {
     
     this.app.use(express.json());
     this.app.use(helmet());
+
+    this.app.use("/nanum", NanumRouter);
   }
 
-  public listen(port: number, hostname: string) {
+  public listen(port?: number, hostname?: string) {
     this.server.listen(port, hostname);
   }
 }
