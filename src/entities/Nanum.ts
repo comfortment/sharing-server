@@ -1,5 +1,7 @@
 export type Path = string;
 
+export type ProcessState = "recruiting" | "paid" | "processing" | "done";
+
 interface BaseProduct {
   imagePath?: Path;
   price: number;
@@ -8,7 +10,7 @@ interface BaseProduct {
   payAt: "advanced" | "deferred";
   title: string;
   star: boolean;
-  processState: "recruiting" | "paid" | "processing" | "done"
+  processState: ProcessState;
 }
 
 export interface BundleProduct extends BaseProduct {
