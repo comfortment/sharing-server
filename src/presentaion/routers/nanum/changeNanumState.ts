@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 
 
-const changeNanumState = async (req: Request, res: Response) {
+const changeNanumState = async (req: Request, res: Response) => {
 
 };
 

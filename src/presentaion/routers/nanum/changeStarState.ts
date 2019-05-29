@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 
 
-const changeStarState = async (req: Request, res: Response) {
+const changeStarState = async (req: Request, res: Response) => {
 
 };
 

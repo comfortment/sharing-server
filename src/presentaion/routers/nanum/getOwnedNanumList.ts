@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 
 
-const getOwnedNanumList = async (req: Request, res: Response) {
+const getOwnedNanumList = async (req: Request, res: Response) => {
 
 };
 
