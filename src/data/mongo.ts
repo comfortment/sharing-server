@@ -11,7 +11,6 @@ class MongoConnection {
     this.dbName = process.env.DB_NAME!;
     this.client = new MongoClient(this.dbUrl);
     this.dbConnection = await this.createConnection();
-    console.log(this.dbConnection);
   }
 
   private static async createConnection(): Promise<Db> {

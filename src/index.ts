@@ -9,7 +9,7 @@ import onExit from "./utils/processExitTrigger";
 
 const app = new App();
 
-(async function (env: string, app: App) {
+(async (env: string, app: App) => {
   switch (env) {
     case "production":
       dotenv.config();
