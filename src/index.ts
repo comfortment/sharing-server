@@ -4,6 +4,8 @@ import App from "./app";
 import { IncorrectEnvError } from "./exception";
 import { env } from "./utils/commanlineOptions";
 import MongoConnection from "./data/mongo";
+import onExit from "./utils/processExitTrigger";
+
 
 const app = new App();
 
@@ -22,3 +24,5 @@ const app = new App();
   app.listen(Number(process.env.APPLICATION_PORT), process.env.APPLICATION_HOST);
 }
 )(env, app);
+
+process.on("exit", onExit);

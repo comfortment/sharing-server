@@ -19,11 +19,13 @@ class MongoConnection {
     return this.client.db(this.dbName);
   }
 
-  public static getConnection(): Db {
+  public static get(): Db {
     return this.dbConnection;
+  }
+
+  public static close() {
+    this.client.close();
   }
 }
 
 export default MongoConnection;
-
-// 서버 뒤질 때 client.close()
