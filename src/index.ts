@@ -3,10 +3,13 @@ import dotenv from "dotenv";
 import App from "./app";
 import { IncorrectEnvError } from "./exception";
 import { env } from "./utils/commanlineOptions";
+import MongoConnection from "./data/mongo";
+import onExit from "./utils/processExitTrigger";
+
 
 const app = new App();
 
-const runApp = (env: string, app: App) => {
+(async (env: string, app: App) => {
   switch (env) {
     case "production":
       dotenv.config();
@@ -17,7 +20,9 @@ const runApp = (env: string, app: App) => {
     default:
       throw new IncorrectEnvError();
   }
+  await MongoConnection.initialize();
   app.listen(Number(process.env.APPLICATION_PORT), process.env.APPLICATION_HOST);
 }
+)(env, app);
 
-runApp(env, app);
+process.on("exit", onExit);
