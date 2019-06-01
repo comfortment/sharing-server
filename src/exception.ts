@@ -5,3 +5,5 @@ export class IncorrectEnvError extends Error {
     Error.captureStackTrace(this, this.constructor);
   }
 }
+
+export class BadConditionError extends Error { }

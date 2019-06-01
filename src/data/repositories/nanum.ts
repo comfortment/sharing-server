@@ -1,6 +1,19 @@
+import { Collection } from "mongodb";
+
 import { NanumRepository } from "../../services/repositoryInterfaces/nanum";
+import MongoConnection from "../mongo";
+import { BroughtNanum, GetNanumListCondition } from "../../types/getNanumTypes";
+import { MONGODB_NANUM_COLLECTION } from "../../constant/mongo";
 
 
-class MongoNanumRepository implements NanumRepository {
-   
+export class MongoNanumRepository implements NanumRepository {
+  private collection: Collection;
+
+  public constructor() {
+    this.collection = MongoConnection.getCollection(MONGODB_NANUM_COLLECTION);
+  }
+  
+  public async find(condition: GetNanumListCondition): Promise<BroughtNanum[]> {
+    return await this.collection.find(condition).toArray();
+  }
 }

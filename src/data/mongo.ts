@@ -1,4 +1,4 @@
-import { Db, MongoClient } from "mongodb";
+import { Collection, Db, MongoClient } from "mongodb";
 
 class MongoConnection {
   private static client: MongoClient;
@@ -18,8 +18,8 @@ class MongoConnection {
     return this.client.db(this.dbName);
   }
 
-  public static get(): Db {
-    return this.dbConnection;
+  public static getCollection(collectionName: string): Collection {
+    return this.dbConnection.collection(collectionName);
   }
 
   public static close() {

@@ -2,10 +2,13 @@ export type Path = string;
 
 export type ProcessState = "recruiting" | "paid" | "processing" | "done";
 
-interface BaseProduct {
+export type ProductType = "bundle" | "joint" | "rummage_sale" | "worker";
+
+export interface BaseProduct {
   imagePath?: Path;
+  type: ProductType;
   price: number;
-  expiry: Date;
+  expiry: string;
   description?: string;
   payAt: "advanced" | "deferred";
   title: string;
