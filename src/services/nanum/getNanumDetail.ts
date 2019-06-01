@@ -4,7 +4,7 @@ import { NonExistNanumError } from "../../exception";
 
 
 const getNanumDetail = async (repository: NanumRepository, nanumId: string): Promise<Nanum> => {
-  const broughtNanum: Nanum | undefined= await repository.findOne(nanumId);
+  const broughtNanum: Nanum | undefined = await repository.findOne(nanumId);
 
   if (!broughtNanum) {
     throw new NonExistNanumError();

@@ -12,7 +12,7 @@ const getNanumList = async (
   const allowCondition: (NanumType | undefined)[] = [
     "bundle", "joint", "rummage_sale", "worker" , undefined
   ];
-  const expiry: string | undefined = condition.expiry;
+  const {expiry} = condition;
   
   if (expiry) {
     const time: number = Number(getDateOrHour(expiry));
