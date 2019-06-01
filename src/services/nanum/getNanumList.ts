@@ -1,3 +1,5 @@
+import { inRange } from "lodash";
+
 import { NanumRepository } from "../repositoryInterfaces/nanum";
 import { GetNanumListCondition } from "../../types/getNanumTypes";
 import { BaseProduct, ProductType } from "../../entities/Nanum";
@@ -10,12 +12,31 @@ const getNanumList = async (
   const allowCondition: (ProductType | undefined)[] = [
     "bundle", "joint", "rummage_sale", "worker" , undefined
   ];
+  const expiry: string | undefined = condition.expiry;
   
+  if (expiry) {
+    const time: number = Number(getDateOrHour(expiry));
+    const kind: string = getKindOfExpiry(expiry);
+
+    const isDateExpiry = kind === 'd' && inDateRange(time);
+    const isHourExpiry = kind === 'h' && inHourRange(time);
+
+    if (!isDateExpiry || !isHourExpiry) {
+      throw new BadConditionError();
+    }
+  }
+
   if (allowCondition.includes(condition.type)) {
     return await repository.find(condition);
   } else {
     throw new BadConditionError();
   }
 };
+
+const getDateOrHour = (expiry: string):string => expiry.slice(0, 2);
+const getKindOfExpiry = (expiry: string):string => expiry.slice(2, 3);
+const inDateRange = (time: number): boolean => inRange(time, 1, 31);
+const inHourRange = (time: number): boolean => inRange(time, 1, 25);
+
 
 export default getNanumList;
