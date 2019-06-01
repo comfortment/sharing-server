@@ -1,11 +1,7 @@
-import { BaseProduct, Path, ProductType } from "../entities/Nanum";
+import { NanumType } from "../entities/Nanum";
 
 
 export interface GetNanumListCondition {
-  type?: ProductType,
+  type?: NanumType,
   expiry?: string
-}
-
-export interface BroughtNanum extends BaseProduct {
-  referTo: Path;
 }
