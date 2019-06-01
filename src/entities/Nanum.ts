@@ -2,11 +2,12 @@ export type Path = string;
 
 export type ProcessState = "recruiting" | "paid" | "processing" | "done";
 
-export type ProductType = "bundle" | "joint" | "rummage_sale" | "worker";
+export type NanumType = "bundle" | "joint" | "rummage_sale" | "worker";
 
-export interface BaseProduct {
+export interface Nanum {
+  id: string;
   imagePath?: Path;
-  type: ProductType;
+  type: NanumType;
   price: number;
   expiry: string;
   description?: string;
@@ -14,16 +15,5 @@ export interface BaseProduct {
   title: string;
   star: boolean;
   processState: ProcessState;
+  referTo?: Path;
 }
-
-export interface BundleProduct extends BaseProduct {
-  referTo: Path;
-}
-
-export interface JointProduct extends BaseProduct {
-  referTo: Path;
-}
-
-export interface RummageSaleProduct extends BaseProduct { }
-
-export interface WorkerProduct extends BaseProduct { }

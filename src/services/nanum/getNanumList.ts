@@ -2,14 +2,14 @@ import { inRange } from "lodash";
 
 import { NanumRepository } from "../repositoryInterfaces/nanum";
 import { GetNanumListCondition } from "../../types/getNanumTypes";
-import { BaseProduct, ProductType } from "../../entities/Nanum";
+import { Nanum, NanumType } from "../../entities/Nanum";
 import { BadConditionError } from "../../exception";
 
 
 const getNanumList = async (
   repository: NanumRepository, condition: GetNanumListCondition
-): Promise<BaseProduct[]> => {
-  const allowCondition: (ProductType | undefined)[] = [
+): Promise<Nanum[]> => {
+  const allowCondition: (NanumType | undefined)[] = [
     "bundle", "joint", "rummage_sale", "worker" , undefined
   ];
   const expiry: string | undefined = condition.expiry;
