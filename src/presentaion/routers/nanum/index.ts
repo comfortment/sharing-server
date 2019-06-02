@@ -2,7 +2,7 @@ import { Router } from "express";
 
 import getNanumListHandler from "./getNanumList";
 import getNanumDetailHandler from "./getNanumDetail";
-import changeStarState from "./changeStarState";
+import changeStarStateHandler from "./changeStarState";
 import getStaredNanumList from "./getStaredNanumList";
 import createNanum from "./createNanum";
 import getOwnedNanumList from "./getOwnedNanumList";
@@ -16,11 +16,11 @@ const NanumRouter = Router();
 NanumRouter.get('/', getNanumListHandler);
 NanumRouter.post('/', createNanum);
 NanumRouter.get('/:nanumId', getNanumDetailHandler);
-NanumRouter.patch('/stared/:postId/:userId', changeStarState);
-NanumRouter.get('/stared/:userId', getStaredNanumList);
-NanumRouter.get('/raised/:userId', getOwnedNanumList);
-NanumRouter.get('/joined/:userId', getJoinedNanumList);
-NanumRouter.patch('/joined/:postId/:userId', joinNanum);
-NanumRouter.patch('/raised/:userId/state', changeNanumState);
+NanumRouter.patch('/stared/:nanumId/:apartmentId', changeStarStateHandler);
+NanumRouter.get('/stared/:apartmentId', getStaredNanumList);
+NanumRouter.get('/raised/:apartmentId', getOwnedNanumList);
+NanumRouter.get('/joined/:apartmentId', getJoinedNanumList);
+NanumRouter.patch('/joined/:nanumId/:apartmentId', joinNanum);
+NanumRouter.patch('/raised/:apartmentId/state', changeNanumState);
 
 export default NanumRouter;
