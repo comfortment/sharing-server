@@ -24,7 +24,7 @@ export class MongoNanumRepository implements NanumRepository {
   }
 
   public async updateOne(id: string, apartmentId: string, target: object): Promise<void> {
-    const condition: PatchOwnNanumCondition = {id, apartmentId}
+    const condition: PatchOwnNanumCondition = {id, apartmentId};
     await this.collection.findOneAndUpdate(condition, {$set: target});
   }
 }
