@@ -5,6 +5,7 @@ import { random } from "lodash";
 import { NanumRepository } from "../src/services/repositoryInterfaces/nanum";
 import { GetNanumListCondition } from "../src/types/getNanumTypes";
 import { Nanum, NanumType } from "../src/entities/Nanum";
+import { NanumTypeNames } from "../src/constant/nanum";
 
 export const ELEMENT_COUNT = 1000;
 
@@ -12,14 +13,14 @@ export function expiryToComparable(expiry: string): number {
   const isDateExpiry = expiry[2] === "d";
   const numberPart = expiry.slice(0, 2);
 
-  function hourToDateScale(hour: number) {
-    return 24 / hour;
+  function dateToHourScale(date: number) {
+    return 24 * date;
   }
 
   if (isDateExpiry) {
-    return Number(numberPart);
+    return dateToHourScale(Number(numberPart));
   } else {
-    return hourToDateScale(Number(numberPart));
+    return Number(numberPart);
   }
 }
 
@@ -27,7 +28,12 @@ export class MockNanumRepository implements NanumRepository {
   private data: Nanum[] = [];
 
   public constructor() {
-    const types: NanumType[] = ["bundle", "joint", "rummage_sale", "worker"];
+    const types: NanumType[] = [
+      NanumTypeNames.bundle,
+      NanumTypeNames.joint,
+      NanumTypeNames.rummage_sale,
+      NanumTypeNames.worker,
+    ];
     for (let i = 0; i < ELEMENT_COUNT; i++) {
       const expiry = [random(1, 25).toString() + "h", random(1, 31).toString() + "d"][random(0, 1)];
       this.data.push({
