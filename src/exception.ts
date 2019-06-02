@@ -7,3 +7,5 @@ export class IncorrectEnvError extends Error {
 }
 
 export class BadConditionError extends Error { }
+
+export class NonExistNanumError extends Error { }
