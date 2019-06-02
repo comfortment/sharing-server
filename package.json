@@ -18,26 +18,34 @@
   "bugs": {
     "url": "https://github.com/comfortment/sharing-server/issues"
   },
+  "jest": {
+    "preset": "ts-jest",
+    "rootDir": "./test"
+  },
   "homepage": "https://github.com/comfortment/sharing-server#readme",
   "devDependencies": {
     "@types/dotenv": "^6.1.1",
     "@types/express": "^4.16.1",
+    "@types/faker": "^4.1.5",
     "@types/helmet": "0.0.43",
     "@types/jest": "^24.0.13",
     "@types/lodash": "^4.14.133",
-    "@types/mongodb": "^3.1.27",
+    "@types/mongodb": "^3.1.28",
     "@types/nopt": "^3.0.29",
+    "@types/uuid": "^3.4.4",
     "jest": "^24.8.0",
     "ts-jest": "^24.0.2",
     "tslint-config-airbnb": "^5.11.1",
-    "typescript": "^3.4.5"
+    "typescript": "^3.5.1"
   },
   "dependencies": {
     "dotenv": "^8.0.0",
-    "express": "^4.16.4",
+    "express": "^4.17.1",
+    "faker": "^4.1.0",
     "helmet": "^3.18.0",
     "lodash": "^4.17.11",
     "mongodb": "^3.2.6",
-    "nopt": "^4.0.1"
+    "nopt": "^4.0.1",
+    "uuid": "^3.3.2"
   }
 }
