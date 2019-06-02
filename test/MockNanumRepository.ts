@@ -83,4 +83,8 @@ export class MockNanumRepository implements NanumRepository {
   public findOne(_: string) {
     return {} as any;
   }
+
+  public async updateOne(id: string, apartmentId: string, target: object): Promise<void> {
+    return;
+  }
 }
