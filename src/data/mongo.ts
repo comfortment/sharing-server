@@ -9,7 +9,7 @@ class MongoConnection {
   public static async initialize() {
     this.dbUrl = process.env.DB_URL!;
     this.dbName = process.env.DB_NAME!;
-    this.client = new MongoClient(this.dbUrl);
+    this.client = new MongoClient(this.dbUrl, { useNewUrlParser: true });
     this.dbConnection = await this.createConnection();
   }
 

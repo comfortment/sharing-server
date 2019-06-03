@@ -1,6 +1,6 @@
 export type NanumType = "bundle" | "joint" | "rummage_sale" | "worker";
 
-export type PayAt = "Advanced" | "Deferred";
+export type PayAt = "advanced" | "deferred";
 
 export type Path = string;
 

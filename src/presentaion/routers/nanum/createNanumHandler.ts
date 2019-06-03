@@ -9,6 +9,8 @@ const createNanumHandler = async (req: Request, res: Response) => {
   const repository = new MongoNanumRepository();
 
   await createNanum(repository, {...req.body, apartmentId});
+
+  return res.status(201).send();
 };
 
 export default createNanumHandler;
