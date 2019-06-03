@@ -10,8 +10,8 @@ import { MONGODB_NANUM_COLLECTION } from "../../constant/mongo";
 export class MongoNanumRepository implements NanumRepository {
   private collection: Collection;
 
-  public constructor() {
-    this.collection = MongoConnection.getCollection(MONGODB_NANUM_COLLECTION);
+  public constructor(collectionName: string = MONGODB_NANUM_COLLECTION) {
+    this.collection = MongoConnection.getCollection(collectionName);
   }
   
   public async find(condition: object): Promise<NanumModel[]> {
