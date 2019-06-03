@@ -1,3 +1,5 @@
+export type NanumType = "bundle" | "joint" | "rummage_sale" | "worker";
+
 export type PayAt = "Advanced" | "Deferred";
 
 export type Path = string;
@@ -7,12 +9,13 @@ export type NanumId = string;
 export interface Nanum {
   nanumId: NanumId;
 
-  // A.I
+  // from A.I
   roomNumber: number;
   ownerName: string;
   phoneNumber: string;
 
-  // Nanum
+  // from Nanum
+  type: NanumType;
   bankAccount?: string;
   bank?: string;
   imagePath?: string;

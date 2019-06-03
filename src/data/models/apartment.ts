@@ -1,5 +1,5 @@
 import { NanumId, Nanum } from "../../entities/Nanum";
-import { ApartmentId } from "./nanum";
+import { ApartmentId } from "../../types/nanum";
 
 
 export type ApartmentWithoutNanum = Pick<Nanum, "roomNumber" | "ownerName" | "phoneNumber">;

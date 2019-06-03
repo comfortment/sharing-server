@@ -1,12 +1,9 @@
-import { Omit } from "../../types/Omit";
-import { Nanum } from "../../entities/Nanum";
+import { ApartmentId, NanumWithoutApartment } from "../../types/nanum";
+import { NanumId } from "../../entities/Nanum";
 
-// MongoDb Collection
 
-export type NanumWithoutApartment = Omit<Nanum, "roomNumber" | "ownerName" | "phoneNumber">;
-
-export type ApartmentId = string;
-
+// MongoDb Collection _ "nanum"
 export interface MongoNanumModel extends NanumWithoutApartment {
   apartmentId: ApartmentId;
+  nanumId: NanumId;
 }
