@@ -45,7 +45,6 @@ export class MockNanumRepository implements NanumRepository {
         expiry,
         payAt: ["advanced", "deferred"][random(0, 1)] as ("advanced" | "deferred"),
         title: faker.name.title(),
-        star: [true, false][random(0, 1)],
         processState: "recruiting",
       });
     }
@@ -56,7 +55,6 @@ export class MockNanumRepository implements NanumRepository {
       expiry: "12d",
       payAt: "advanced",
       title: "당근",
-      star: false,
       processState: "recruiting",
     });
   }
