@@ -6,9 +6,4 @@ export interface ApartmentInformation {
   phoneNumber: string;
   bankAccount?: string;
   bank?: string;
-  disturbTimeRange: [number, number][];
-  acceptedDecibel: number;
-  hateNoiseDescription: string;
-  hateSmellDescription: string;
-  etc: string;
 }

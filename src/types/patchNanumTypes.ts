@@ -1,4 +1,4 @@
 export interface PatchOwnNanumCondition {
-  id: string;
-  apartmentId: string;
+  id?: string;
+  apartmentId?: string;
 }

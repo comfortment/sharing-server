@@ -11,9 +11,8 @@ export interface Nanum {
   price: number;
   expiry: string;
   description?: string;
-  payAt: "advanced" | "deferred";
+  payAt?: "advanced" | "deferred";
   title: string;
-  star: boolean;
   processState: ProcessState;
   referTo?: Path;
 }

@@ -9,6 +9,8 @@ import { NanumTypeNames } from "../src/constant/nanum";
 
 export const ELEMENT_COUNT = 1000;
 
+export const SPECIFIC_TEST_ID = uuid();
+
 export function expiryToComparable(expiry: string): number {
   const isDateExpiry = expiry[2] === "d";
   const numberPart = expiry.slice(0, 2);
@@ -34,7 +36,7 @@ export class MockNanumRepository implements NanumRepository {
       NanumTypeNames.rummage_sale,
       NanumTypeNames.worker,
     ];
-    for (let i = 0; i < ELEMENT_COUNT; i++) {
+    for (let i = 0; i < ELEMENT_COUNT - 1; i++) {
       const expiry = [random(1, 25).toString() + "h", random(1, 31).toString() + "d"][random(0, 1)];
       this.data.push({
         id: uuid(),
@@ -43,10 +45,18 @@ export class MockNanumRepository implements NanumRepository {
         expiry,
         payAt: ["advanced", "deferred"][random(0, 1)] as ("advanced" | "deferred"),
         title: faker.name.title(),
-        star: [true, false][random(0, 1)],
         processState: "recruiting",
       });
     }
+    this.data.push({
+      id: SPECIFIC_TEST_ID,
+      type: "joint",
+      price: 38000,
+      expiry: "12d",
+      payAt: "advanced",
+      title: "당근",
+      processState: "recruiting",
+    });
   }
 
   public async find(condition: GetNanumListCondition): Promise<Nanum[]> {
@@ -80,8 +90,8 @@ export class MockNanumRepository implements NanumRepository {
   }
 
   // Fake
-  public findOne(_: string) {
-    return {} as any;
+  public async findOne(id: string) {
+    return this.data.find(value => value.id === id)!;
   }
 
   public async updateOne(id: string, apartmentId: string, target: object): Promise<void> {
