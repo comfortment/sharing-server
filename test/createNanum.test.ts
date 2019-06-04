@@ -3,7 +3,8 @@ import { MockNanumRepository } from "./MockNanumRepository";
 import { CreateNanumRequest } from "../src/types/nanum";
 
 describe("createNanum", () => {
-  const mockNanumRepository = new MockNanumRepository();
+  const MEANING_LESS = "";
+  const mockNanumRepository = new MockNanumRepository(MEANING_LESS);
 
   it("will create nanum by given data", async cb => {
     const nanum: CreateNanumRequest = {
