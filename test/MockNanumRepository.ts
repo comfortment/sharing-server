@@ -4,6 +4,7 @@ import { Nanum, NanumType } from "./entities/Nanum";
 import { random } from "lodash";
 import uuid from "uuid/v4";
 import faker from "faker";
+import { GetNanumFilter } from "./types/nanum";
 
 export const MOCK_NANUM_COUNT = 1000;
 
@@ -34,7 +35,7 @@ export class MockNanumRepository implements NanumRepository {
     });
   }
 
-  public async find(): Promise<Nanum[]> {
+  public async find(filter: GetNanumFilter): Promise<NanumModel[]> {
     return [];
   }
 

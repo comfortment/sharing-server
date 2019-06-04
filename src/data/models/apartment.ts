@@ -10,7 +10,7 @@ export interface LambdaApartmentModel extends ApartmentWithoutNanum {
 }
 
 // MongoDb Collection
-export interface MongoApartmentModel {
+export interface MongoOwnNanumModel {
   apartmentId: ApartmentId;
   starList: NanumId[];
   joinList: NanumId[];

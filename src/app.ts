@@ -3,6 +3,7 @@ import helmet from "helmet";
 import http from "http";
 
 import NanumRouter from "./presentaion/routers/nanum";
+import morgan from "morgan";
 
 
 class App {
@@ -13,6 +14,7 @@ class App {
     this.app = express();
     this.server = http.createServer(this.app);
     
+    this.app.use(morgan("combined"));
     this.app.use(express.json());
     this.app.use(helmet());
 
