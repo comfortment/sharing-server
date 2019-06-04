@@ -14,5 +14,4 @@ export interface MongoApartmentModel {
   apartmentId: ApartmentId;
   starList: NanumId[];
   joinList: NanumId[];
-  raiseList: NanumId[];
 }

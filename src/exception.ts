@@ -5,3 +5,7 @@ export class IncorrectEnvError extends Error {
     Error.captureStackTrace(this, this.constructor);
   }
 }
+
+export class NonExistNanumError extends Error { }
+
+export class NonExistApartmentError extends Error { }

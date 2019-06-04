@@ -1,9 +1,9 @@
 import { Nanum } from "../../entities/Nanum";
-import { MongoNanumModel } from "../../data/models/nanum";
+import { NanumModel } from "../../data/models/nanum";
 
 export interface NanumRepository {
   find(): Promise<Nanum[]>;
-  findOne(): Promise<Nanum | undefined>;
+  findOne(id: string): Promise<NanumModel | null>;
   updateOne(): Promise<void>;
-  createOne(data: MongoNanumModel): Promise<void>;
+  createOne(data: NanumModel): Promise<void>;
 }

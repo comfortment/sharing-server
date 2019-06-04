@@ -3,7 +3,7 @@ import MongoConnection from "../mongo";
 import { Collection } from "mongodb";
 import { MONGO_COLLECTION_NANUM } from "../../constant/mongo";
 import { Nanum } from "../../entities/Nanum";
-import { MongoNanumModel } from "../models/nanum";
+import { NanumModel } from "../models/nanum";
 
 
 export class MongoNanumRepository implements NanumRepository{
@@ -17,15 +17,15 @@ export class MongoNanumRepository implements NanumRepository{
     return []
   }
 
-  public async findOne(): Promise<Nanum | undefined> {
-    return
+  public async findOne(nanumId: string): Promise<NanumModel | null> {
+    return await this.collection.findOne({nanumId});
   }
 
   public async updateOne() {
 
   }
 
-  public async createOne(data: MongoNanumModel): Promise<void> {
+  public async createOne(data: NanumModel): Promise<void> {
     await this.collection.insertOne(data);
   }
 

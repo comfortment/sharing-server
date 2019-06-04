@@ -3,7 +3,7 @@ import { NanumId } from "../../entities/Nanum";
 
 
 // MongoDb Collection _ "nanum"
-export interface MongoNanumModel extends NanumWithoutApartment {
+export interface NanumModel extends NanumWithoutApartment {
   apartmentId: ApartmentId;
   nanumId: NanumId;
 }
