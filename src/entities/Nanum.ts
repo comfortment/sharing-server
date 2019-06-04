@@ -1,18 +1,28 @@
-export type Path = string;
-
-export type ProcessState = "recruiting" | "paid" | "processing" | "done";
-
 export type NanumType = "bundle" | "joint" | "rummage_sale" | "worker";
 
+export type PayAt = "advanced" | "deferred";
+
+export type Path = string;
+
+export type NanumId = string;
+
 export interface Nanum {
-  id: string;
-  imagePath?: Path;
+  nanumId: NanumId;
+
+  // from A.I
+  roomNumber: number;
+  ownerName: string;
+  phoneNumber: string;
+
+  // from Nanum
   type: NanumType;
+  bankAccount?: string;
+  bank?: string;
+  imagePath?: string;
   price: number;
-  expiry: string;
+  expiry: number; // 1h == 1
   description?: string;
-  payAt?: "advanced" | "deferred";
-  title: string;
-  processState: ProcessState;
   referTo?: Path;
+  payAt?: PayAt;
+  title: string;
 }

@@ -1,8 +1,17 @@
-type NanumId = string;
+import { NanumId, Nanum } from "../../entities/Nanum";
+import { ApartmentId } from "../../types/nanum";
 
-export interface ApartmentModel {
-  id: string;
-  stared: NanumId[];
-  joined: NanumId[];
-  raised: NanumId[];
+
+export type ApartmentWithoutNanum = Pick<Nanum, "roomNumber" | "ownerName" | "phoneNumber">;
+
+// A.I Lambda
+export interface LambdaApartmentModel extends ApartmentWithoutNanum {
+  apartmentId: ApartmentId;
+}
+
+// MongoDb Collection
+export interface MongoApartmentModel {
+  apartmentId: ApartmentId;
+  starList: NanumId[];
+  joinList: NanumId[];
 }

@@ -1,29 +1,32 @@
-import { Collection } from "mongodb";
-
-import { NanumModel } from "../models/nanum";
 import { NanumRepository } from "../../services/repositoryInterfaces/nanum";
 import MongoConnection from "../mongo";
-import { PatchOwnNanumCondition } from "../../types/patchNanumTypes";
-import { MONGODB_NANUM_COLLECTION } from "../../constant/mongo";
+import { Collection } from "mongodb";
+import { MONGO_COLLECTION_NANUM } from "../../constant/mongo";
+import { Nanum } from "../../entities/Nanum";
+import { NanumModel } from "../models/nanum";
 
 
-export class MongoNanumRepository implements NanumRepository {
+export class MongoNanumRepository implements NanumRepository{
   private collection: Collection;
 
-  public constructor(collectionName: string = MONGODB_NANUM_COLLECTION) {
+  public constructor (collectionName: string = MONGO_COLLECTION_NANUM) {
     this.collection = MongoConnection.getCollection(collectionName);
   }
-  
-  public async find(condition: object): Promise<NanumModel[]> {
-    return await this.collection.find(condition).toArray();
+
+  public async find(): Promise<Nanum[]> {
+    return []
   }
 
-  public async findOne(id: string): Promise<NanumModel | undefined> {
-    return (await this.collection.find({id}).toArray())[0];
+  public async findOne(nanumId: string): Promise<NanumModel | null> {
+    return await this.collection.findOne({nanumId});
   }
 
-  public async updateOne(id: string, apartmentId: string, target: object): Promise<void> {
-    const condition: PatchOwnNanumCondition = {id, apartmentId};
-    await this.collection.findOneAndUpdate(condition, {$set: target});
+  public async updateOne() {
+
   }
+
+  public async createOne(data: NanumModel): Promise<void> {
+    await this.collection.insertOne(data);
+  }
+
 }

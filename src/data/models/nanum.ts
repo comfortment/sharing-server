@@ -1,4 +1,9 @@
-import { Nanum } from "../../entities/Nanum";
+import { ApartmentId, NanumWithoutApartment } from "../../types/nanum";
+import { NanumId } from "../../entities/Nanum";
 
 
-export interface NanumModel extends Nanum {}
+// MongoDb Collection _ "nanum"
+export interface NanumModel extends NanumWithoutApartment {
+  apartmentId: ApartmentId;
+  nanumId: NanumId;
+}

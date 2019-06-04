@@ -1,26 +1,30 @@
-import { MockNanumRepository, SPECIFIC_TEST_ID } from "./MockNanumRepository";
+import { MockNanumRepository } from "./MockNanumRepository";
 import getNanumDetail from "../src/services/nanum/getNanumDetail";
+import uuid from "uuid/v4";
+import { MockApartmentRepository } from "./MockApartmentRepository";
 
 describe("getNanumDetail", () => {
-  const mockNanumRepository = new MockNanumRepository();
+  const nanumId = uuid();
+  const mockNanumRepository = new MockNanumRepository(nanumId);
+  const mockApartmentRepository = new MockApartmentRepository();
 
-  async function runWithInjectedRepository(nanumId: string) {
-    return await getNanumDetail(mockNanumRepository, nanumId);
-  }
+  it("will return nanum detail with legal id", async cb => {
+    const nanumDetail = await getNanumDetail(mockNanumRepository, mockApartmentRepository, nanumId);
+    const nanumRaisedApartment = await mockApartmentRepository.findOne(nanumId);
 
-  it("will return with specific nanum id", async cb => {
-    const id = SPECIFIC_TEST_ID;
-    const resultPromise = runWithInjectedRepository(id);
-
-    await expect(resultPromise).resolves.toHaveProperty("id", id);
+    expect(nanumDetail.nanumId).toEqual(nanumId);
+    expect(nanumDetail.ownerName).toEqual(nanumRaisedApartment.ownerName);
     cb();
   });
 
-  it("will throw error with non-existing nanum id", async cb => {
-    const id = "loremIpsumDolorSit";
-    const resultPromise = runWithInjectedRepository(id);
+  it("will throw error with illegal id", async cb => {
+    const nanumDetailPromise = getNanumDetail(
+      mockNanumRepository,
+      mockApartmentRepository,
+      "some illegal nanum id"
+    );
 
-    await expect(resultPromise).rejects.toThrowError();
+    await expect(nanumDetailPromise).rejects.toThrow();
     cb();
   });
 });
