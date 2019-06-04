@@ -1,13 +1,15 @@
 import { NanumRepository } from "../repositoryInterfaces/nanum";
 import { NonExistNanumError, NonExistApartmentError } from "../../exception";
 import { ApartmentId } from "../../types/nanum";
-import { lambda } from "../../aws/index";
 import { Nanum } from "../../entities/Nanum";
+import { ApartmentRepository } from "../repositoryInterfaces/apartment";
 
 
-const getNanumDetail = async (repository: NanumRepository, nanumId: string): Promise<Nanum> => {
+const getNanumDetail = async (
+  nanumRepository: NanumRepository, apartmentRepository: ApartmentRepository, nanumId: string
+): Promise<Nanum> => {
   let nanumDetail: Nanum;
-  const broughtNanum = await repository.findOne(nanumId);
+  const broughtNanum = await nanumRepository.findOne(nanumId);
   if (!broughtNanum) {
     throw new NonExistNanumError();
   }
@@ -15,19 +17,9 @@ const getNanumDetail = async (repository: NanumRepository, nanumId: string): Pro
   const apartmentId: ApartmentId = broughtNanum.apartmentId;
 
   try {
-    const { Payload: res } = await lambda.invoke(
-      {FunctionName: process.env.AI_LAMBDA!, Payload: JSON.stringify({id: apartmentId})}
-    ).promise();
-
-    if (!res) { 
-      throw new NonExistApartmentError();
-    }
-    
-    const broughtApartment = JSON.parse(res.toString());
-    
+    const broughtApartment = await apartmentRepository.findOne(apartmentId);
     nanumDetail = {...broughtNanum, ...broughtApartment};
   } catch (e) {
-    console.error(e)
     throw new NonExistApartmentError();
   }
 
