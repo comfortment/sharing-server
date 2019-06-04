@@ -36,7 +36,25 @@ export class MockNanumRepository implements NanumRepository {
   }
 
   public async find(filter: GetNanumFilter): Promise<NanumModel[]> {
-    return [];
+    let filtered1;
+    if (filter.apartmentId) {
+      filtered1 = this.data.filter(value => {
+        return value.apartmentId === filter.apartmentId;
+      });
+    } else {
+      filtered1 = this.data;
+    }
+
+    let filtered2;
+    if (filter.nanumId) {
+      filtered2 = filtered1.filter(value => {
+        return value.nanumId === filter.nanumId;
+      });
+    } else {
+      filtered2 = filtered1;
+    }
+
+    return filtered2;
   }
 
   public async findOne(id: string): Promise<NanumModel | null> {
@@ -47,5 +65,9 @@ export class MockNanumRepository implements NanumRepository {
 
   public async createOne(data: NanumModel): Promise<void> {
     this.data.push(data);
+  }
+
+  public pushMockObject(nanum: NanumModel) {
+    this.data.push(nanum);
   }
 }
