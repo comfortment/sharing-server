@@ -8,4 +8,4 @@ export interface NanumModel extends NanumWithoutApartment {
   nanumId: NanumId;
 }
 
-export type NanumModelUpdateQuery = Partial<Omit<NanumModel, "apartmentId">>;
+export type NanumModelUpdateQuery = Partial<Omit<NanumModel, "apartmentId" | "nanumId">>;
