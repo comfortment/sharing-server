@@ -1,6 +1,6 @@
 import { NanumId, Nanum } from "../../entities/Nanum";
 import { ApartmentId } from "../../types/nanum";
-
+import { Omit } from "../../types/Omit";
 
 export type ApartmentWithoutNanum = Pick<Nanum, "roomNumber" | "ownerName" | "phoneNumber">;
 
@@ -15,3 +15,5 @@ export interface MongoOwnNanumModel {
   starList: NanumId[];
   joinList: NanumId[];
 }
+
+export type MongoOwnNanumModelQuery = Partial<Omit<MongoOwnNanumModel, "apartmentId">>;

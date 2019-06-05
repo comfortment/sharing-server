@@ -2,7 +2,6 @@ import { NanumRepository } from "../../services/repositoryInterfaces/nanum";
 import MongoConnection from "../mongo";
 import { Collection } from "mongodb";
 import { MONGO_COLLECTION_NANUM } from "../../constant/mongo";
-import { Nanum } from "../../entities/Nanum";
 import { NanumModel, NanumModelUpdateQuery } from "../models/nanum";
 import { GetNanumFilter } from "../../types/nanum";
 
