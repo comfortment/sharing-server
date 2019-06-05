@@ -1,6 +1,6 @@
 import { NanumRepository } from "./services/repositoryInterfaces/nanum";
 import { NanumModel } from "./data/models/nanum";
-import { Nanum, NanumType } from "./entities/Nanum";
+import { Nanum, NanumType, CurrentState } from "./entities/Nanum";
 import { random } from "lodash";
 import uuid from "uuid/v4";
 import faker from "faker";
@@ -22,6 +22,7 @@ export class MockNanumRepository implements NanumRepository {
         price: random(100, 1000) * 100,
         title: faker.name.title(),
         type: ["bundle", "joint", "rummage_sale", "worker"][random(0, 3)] as NanumType,
+        currentState: ["done", "paid", "processing", "recruiting"][random(0, 3)] as CurrentState,
       });
     }
 
@@ -32,6 +33,7 @@ export class MockNanumRepository implements NanumRepository {
       price: 35000,
       title: "hi hello",
       type: "bundle",
+      currentState: "paid",
     });
   }
 

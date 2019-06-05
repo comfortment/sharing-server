@@ -17,6 +17,7 @@ describe("getRaisedNanumList", () => {
     price: 34000,
     title: "Restful API",
     type: "bundle",
+    currentState: "processing",
   };
   mockNanumRepository.pushMockObject(nanumMockObject);
 
