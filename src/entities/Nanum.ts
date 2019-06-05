@@ -1,3 +1,5 @@
+export type CurrentState = "recruiting" | "paid" | "processing" | "done";
+
 export type NanumType = "bundle" | "joint" | "rummage_sale" | "worker";
 
 export type PayAt = "advanced" | "deferred";
@@ -25,4 +27,5 @@ export interface Nanum {
   referTo?: Path;
   payAt?: PayAt;
   title: string;
+  currentState: CurrentState;
 }
