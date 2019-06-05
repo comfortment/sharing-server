@@ -13,6 +13,7 @@ describe("createNanum", () => {
       price: 40000,
       title: "당근",
       type: "bundle",
+      currentState: "recruiting",
     };
     const nanumId = await createNanum(mockNanumRepository, nanum);
 

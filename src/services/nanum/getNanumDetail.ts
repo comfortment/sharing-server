@@ -1,12 +1,12 @@
 import { NanumRepository } from "../repositoryInterfaces/nanum";
 import { NonExistNanumError, NonExistApartmentError } from "../../exception";
 import { ApartmentId } from "../../types/nanum";
-import { Nanum } from "../../entities/Nanum";
+import { Nanum, NanumId } from "../../entities/Nanum";
 import { ApartmentRepository } from "../repositoryInterfaces/apartment";
 
 
 const getNanumDetail = async (
-  nanumRepository: NanumRepository, apartmentRepository: ApartmentRepository, nanumId: string
+  nanumRepository: NanumRepository, apartmentRepository: ApartmentRepository, nanumId: NanumId
 ): Promise<Nanum> => {
   let nanumDetail: Nanum;
   const broughtNanum = await nanumRepository.findOne(nanumId);

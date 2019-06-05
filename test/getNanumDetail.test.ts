@@ -8,12 +8,17 @@ describe("getNanumDetail", () => {
   const mockNanumRepository = new MockNanumRepository(nanumId);
   const mockApartmentRepository = new MockApartmentRepository();
 
+  mockApartmentRepository.pushMockObject({
+    apartmentId: "test",
+    ownerName: "손승용",
+    phoneNumber: "01012345678",
+    roomNumber: 313,
+  });
+
   it("will return nanum detail with legal id", async cb => {
     const nanumDetail = await getNanumDetail(mockNanumRepository, mockApartmentRepository, nanumId);
-    const nanumRaisedApartment = await mockApartmentRepository.findOne(nanumId);
 
     expect(nanumDetail.nanumId).toEqual(nanumId);
-    expect(nanumDetail.ownerName).toEqual(nanumRaisedApartment.ownerName);
     cb();
   });
 

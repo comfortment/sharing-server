@@ -4,6 +4,7 @@ import { Collection } from "mongodb";
 import { MONGO_COLLECTION_NANUM } from "../../constant/mongo";
 import { Nanum } from "../../entities/Nanum";
 import { NanumModel } from "../models/nanum";
+import { GetNanumFilter } from "../../types/nanum";
 
 
 export class MongoNanumRepository implements NanumRepository{
@@ -13,8 +14,8 @@ export class MongoNanumRepository implements NanumRepository{
     this.collection = MongoConnection.getCollection(collectionName);
   }
 
-  public async find(): Promise<Nanum[]> {
-    return []
+  public async find(filter: GetNanumFilter): Promise<NanumModel[]> {
+    return await this.collection.find(filter).toArray();
   }
 
   public async findOne(nanumId: string): Promise<NanumModel | null> {
