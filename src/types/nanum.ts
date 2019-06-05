@@ -16,3 +16,5 @@ export interface GetNanumFilter {
   nanumId?: NanumId;
   apartmentId?: ApartmentId;
 }
+
+export type ModifyNanumRequest = Partial<NanumWithoutApartment>;
