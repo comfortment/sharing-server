@@ -1,10 +1,10 @@
-import { NanumRepository } from "./services/repositoryInterfaces/nanum";
-import { NanumModel, NanumModelUpdateQuery } from "./data/models/nanum";
-import { Nanum, NanumType, CurrentState } from "./entities/Nanum";
+import { NanumRepository } from "../services/repositoryInterfaces/nanum";
+import { NanumModel, NanumModelUpdateQuery } from "../data/models/nanum";
+import { Nanum, NanumType, CurrentState } from "../entities/Nanum";
 import { random, assignIn } from "lodash";
 import uuid from "uuid/v4";
 import faker from "faker";
-import { GetNanumFilter } from "./types/nanum";
+import { GetNanumFilter } from "../types/nanum";
 
 export const MOCK_NANUM_COUNT = 1000;
 

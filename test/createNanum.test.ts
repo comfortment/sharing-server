@@ -1,5 +1,5 @@
 import createNanum from "../src/services/nanum/createNanum";
-import { MockNanumRepository } from "./MockNanumRepository";
+import { MockNanumRepository } from "./mock/MockNanumRepository";
 import { CreateNanumRequest } from "../src/types/nanum";
 
 describe("createNanum", () => {

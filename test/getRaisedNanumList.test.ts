@@ -1,5 +1,5 @@
-import { MockNanumRepository } from "./MockNanumRepository";
-import { MockApartmentRepository } from "./MockApartmentRepository";
+import { MockNanumRepository } from "./mock/MockNanumRepository";
+import { MockApartmentRepository } from "./mock/MockApartmentRepository";
 import { NanumModel } from "../src/data/models/nanum";
 import getRaisedNanumList from "../src/services/nanum/getRaisedNanumList";
 

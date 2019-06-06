@@ -1,7 +1,7 @@
-import { MockNanumRepository } from "./MockNanumRepository";
+import { MockNanumRepository } from "./mock/MockNanumRepository";
 import getNanumDetail from "../src/services/nanum/getNanumDetail";
 import uuid from "uuid/v4";
-import { MockApartmentRepository } from "./MockApartmentRepository";
+import { MockApartmentRepository } from "./mock/MockApartmentRepository";
 
 describe("getNanumDetail", () => {
   const nanumId = uuid();

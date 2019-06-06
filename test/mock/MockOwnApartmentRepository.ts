@@ -1,5 +1,5 @@
-import { OwnApartmentRepository } from "../src/data/models/ownApartment";
-import { MongoOwnNanumModel, MongoOwnNanumModelQuery } from "./data/models/apartment";
+import { OwnApartmentRepository } from "../data/models/ownApartment";
+import { MongoOwnNanumModel, MongoOwnNanumModelQuery } from "../data/models/apartment";
 
 export const OWN_APARTMENT_TEST_APARTMENT_ID = "test_apartment_1";
 

@@ -1,5 +1,5 @@
-import { ApartmentRepository } from "./services/repositoryInterfaces/apartment";
-import { LambdaApartmentModel } from "./data/models/apartment";
+import { ApartmentRepository } from "../services/repositoryInterfaces/apartment";
+import { LambdaApartmentModel } from "../data/models/apartment";
 
 export class MockApartmentRepository implements ApartmentRepository {
   private data: LambdaApartmentModel[] = [];

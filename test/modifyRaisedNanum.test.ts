@@ -1,5 +1,5 @@
 import modifyRaisedNanum from "../src/services/nanum/modifyRaisedNanum";
-import { MockNanumRepository, MOCK_NANUM_APARTMENT_ID } from "./MockNanumRepository";
+import { MockNanumRepository, MOCK_NANUM_APARTMENT_ID } from "./mock/MockNanumRepository";
 import { NoPermissionError } from "../src/exception";
 
 describe("modifyRaisedNanum", () => {
