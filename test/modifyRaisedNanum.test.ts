@@ -20,13 +20,16 @@ describe("modifyRaisedNanum", () => {
   });
 
   it("change nanum state with legal query", async cb => {
-    await modifyRaisedNanum(mockNanumRepository, MOCK_NANUM_APARTMENT_ID, "testNanumId", {
-      bank: "NH",
+    const TEST_NANUM_ID = "testNanumId";
+    const TEST_BANK = "NH";
+
+    await modifyRaisedNanum(mockNanumRepository, MOCK_NANUM_APARTMENT_ID, TEST_NANUM_ID, {
+      bank: TEST_BANK,
     });
 
-    const modified = (await mockNanumRepository.findOne("testNanumId"))!;
+    const modified = (await mockNanumRepository.findOne(TEST_NANUM_ID))!;
 
-    expect(modified.bank).toEqual("NH");
+    expect(modified.bank).toEqual(TEST_BANK);
     cb();
   });
 });
