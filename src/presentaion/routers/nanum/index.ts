@@ -22,7 +22,7 @@ NanumRouter.post("/:apartmentId/raised", createNanumHandler);
 NanumRouter.patch("/:apartmentId/raised/:nanumId", modifyRaisedNanumHandler);
 NanumRouter.patch("/:apartmentId/raised/:nanumId/state", modifyNanumState);
 NanumRouter.get("/:nanumId", getNanumDetailHandler);
-NanumRouter.post("/image", multer({ storage: multerStorage }).single(), uploadImageHandler);
+NanumRouter.post("/image", multer({ storage: multerStorage }).single("file"), uploadImageHandler);
 NanumRouter.patch("/:apartmentId/stared/:nanumId", starNanumHandler);
 NanumRouter.get("/:apartmentId/stared", getStaredNanumListHandler);
 NanumRouter.patch("/:apartmentId/joined/:nanumId", joinNanumHandler);
