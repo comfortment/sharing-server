@@ -11,7 +11,7 @@ export class MockOwnApartmentRepository implements OwnApartmentRepository {
   public constructor() {
     this.data.push({
       apartmentId: OWN_APARTMENT_TEST_APARTMENT_ID,
-      joinList: [],
+      joinList: [OWN_APARTMENT_TEST_STAR_ID],
       starList: [OWN_APARTMENT_TEST_STAR_ID],
     });
   }
