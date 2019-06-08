@@ -6,7 +6,7 @@ import { NonExistApartmentError } from "../../exception";
 const getStaredNanumList = async (
   apartmentRepository: OwnApartmentRepository,
   nanumRepository: NanumRepository,
-  apartmentId: ApartmentId
+  apartmentId: ApartmentId,
 ) => {
   const ownApartment = await apartmentRepository.findOne(apartmentId);
   if (!ownApartment) {

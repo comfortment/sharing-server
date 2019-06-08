@@ -18,3 +18,5 @@ export interface GetNanumFilter {
 }
 
 export type ModifyNanumRequest = Partial<NanumWithoutApartment>;
+
+export type ModifyNanumStateRequest = Pick<NanumWithoutApartment, "currentState">
