@@ -1,5 +1,5 @@
-import { OwnApartmentRepository } from "../src/data/models/ownApartment";
-import { MongoOwnNanumModel, MongoOwnNanumModelQuery } from "./data/models/apartment";
+import { OwnApartmentRepository } from "../data/models/ownApartment";
+import { MongoOwnNanumModel, MongoOwnNanumModelQuery } from "../data/models/apartment";
 
 export const OWN_APARTMENT_TEST_APARTMENT_ID = "test_apartment_1";
 
@@ -11,7 +11,7 @@ export class MockOwnApartmentRepository implements OwnApartmentRepository {
   public constructor() {
     this.data.push({
       apartmentId: OWN_APARTMENT_TEST_APARTMENT_ID,
-      joinList: [],
+      joinList: [OWN_APARTMENT_TEST_STAR_ID],
       starList: [OWN_APARTMENT_TEST_STAR_ID],
     });
   }

@@ -1,10 +1,10 @@
-import { NanumRepository } from "./services/repositoryInterfaces/nanum";
-import { NanumModel, NanumModelUpdateQuery } from "./data/models/nanum";
-import { Nanum, NanumType, CurrentState } from "./entities/Nanum";
+import { NanumRepository } from "../services/repositoryInterfaces/nanum";
+import { NanumModel, NanumModelUpdateQuery } from "../data/models/nanum";
+import { Nanum, NanumType, CurrentState } from "../entities/Nanum";
 import { random, assignIn } from "lodash";
 import uuid from "uuid/v4";
 import faker from "faker";
-import { GetNanumFilter } from "./types/nanum";
+import { GetNanumFilter } from "../types/nanum";
 
 export const MOCK_NANUM_COUNT = 1000;
 
@@ -16,7 +16,7 @@ export class MockNanumRepository implements NanumRepository {
   public constructor(nanumId: string) {
     this.data = [];
 
-    for (let i = 0; i < MOCK_NANUM_COUNT - 2; i++) {
+    for (let i = 0; i < MOCK_NANUM_COUNT - 1; i++) {
       this.data.push({
         apartmentId: faker.internet.ip(),
         expiry: random(1, 30 * 24),
@@ -58,7 +58,16 @@ export class MockNanumRepository implements NanumRepository {
       filtered2 = filtered1;
     }
 
-    return filtered2;
+    let filtered3;
+    if (filter.type) {
+      filtered3 = filtered2.filter(value => {
+        return value.type === filter.type;
+      });
+    } else {
+      filtered3 = filtered2;
+    }
+
+    return filtered3;
   }
 
   public async findOne(id: string): Promise<NanumModel | null> {

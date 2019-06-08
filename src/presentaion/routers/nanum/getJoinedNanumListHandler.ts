@@ -1,22 +1,22 @@
 import { Request, Response } from "express";
 import { MongoNanumRepository } from "../../../data/repositories/nanum";
 import { MongoOwnApartmentRepository } from "../../../data/repositories/mongoOwnApartment";
-import getStaredNanumList from "../../../services/nanum/getStaredNanumList";
+import getJoinedNanumList from "../../../services/nanum/getJoinedNanumList";
 import { NonExistApartmentError } from "../../../exception";
 
-const getStaredNanumListHandler = async (req: Request, res: Response) => {
+
+const getJoinedNanumListHandler = async (req: Request, res: Response) => {
   const apartmentId: string = req.params.apartmentId;
   const nanumRepository = new MongoNanumRepository();
   const ownApartmentRepository = new MongoOwnApartmentRepository();
 
   try {
-    const staredNanumList = await getStaredNanumList(
+    const joinedNanumList = await getJoinedNanumList(
       ownApartmentRepository,
       nanumRepository,
-      apartmentId
+      apartmentId,
     );
-
-    res.status(200).json({ data: staredNanumList });
+    res.status(200).json({ data: joinedNanumList });
   } catch (e) {
     if (e instanceof NonExistApartmentError) {
       res.status(404).send();
@@ -26,4 +26,4 @@ const getStaredNanumListHandler = async (req: Request, res: Response) => {
   }
 };
 
-export default getStaredNanumListHandler;
+export default getJoinedNanumListHandler;

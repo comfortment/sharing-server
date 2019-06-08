@@ -2,7 +2,7 @@ import {
   MockOwnApartmentRepository,
   OWN_APARTMENT_TEST_APARTMENT_ID,
   OWN_APARTMENT_TEST_STAR_ID,
-} from "./MockOwnApartmentRepository";
+} from "./mock/MockOwnApartmentRepository";
 import starNanum from "../src/services/nanum/starNanum";
 
 describe("starNanum", () => {
