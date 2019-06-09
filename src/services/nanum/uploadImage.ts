@@ -8,7 +8,8 @@ const uploadImage = async (image: Buffer, s3: AWS.S3): Promise<string> => {
       Body: image,
       Bucket: S3_BUCKET,
       Key: fileName,
-      ContentType: "image/png",
+      ContentType: "application/octet-stream",
+      ACL: "public-read",
     })
     .promise();
 
