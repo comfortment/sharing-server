@@ -26,4 +26,8 @@ export class MockOwnApartmentRepository implements OwnApartmentRepository {
     own.joinList = query.joinList || own.joinList;
     own.starList = query.starList || own.starList;
   }
+
+  public async insert(data: MongoOwnNanumModel) {
+    return;
+  }
 }
