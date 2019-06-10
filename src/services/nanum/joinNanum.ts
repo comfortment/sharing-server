@@ -3,11 +3,17 @@ import { NanumId } from "../../entities/Nanum";
 import { ApartmentId } from "../../types/nanum";
 import { NonExistApartmentError } from "../../exception";
 
-
 const joinNanum = async (
-  apartmentRepository: OwnApartmentRepository, nanumId: NanumId, apartmentId: ApartmentId
+  apartmentRepository: OwnApartmentRepository,
+  nanumId: NanumId,
+  apartmentId: ApartmentId
 ) => {
-  const broughtApartment = await apartmentRepository.findOne(apartmentId);
+  let broughtApartment = await apartmentRepository.findOne(apartmentId);
+
+  if (!broughtApartment) {
+    await apartmentRepository.update(apartmentId, { starList: [], joinList: [] });
+    broughtApartment = await apartmentRepository.findOne(apartmentId);
+  }
 
   if (!broughtApartment) {
     throw new NonExistApartmentError();
@@ -16,9 +22,7 @@ const joinNanum = async (
   const joinedNanumId = broughtApartment.joinList.find(value => value === nanumId);
 
   if (joinedNanumId) {
-    broughtApartment.joinList = broughtApartment.joinList.filter(
-      value => value !== joinedNanumId
-    );
+    broughtApartment.joinList = broughtApartment.joinList.filter(value => value !== joinedNanumId);
   } else {
     broughtApartment.joinList.push(nanumId);
   }

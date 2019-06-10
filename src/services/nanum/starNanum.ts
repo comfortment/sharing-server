@@ -8,7 +8,12 @@ const starNanum = async (
   nanumId: NanumId,
   apartmentId: ApartmentId
 ) => {
-  const updatingApartment = await apartmentRepository.findOne(apartmentId);
+  let updatingApartment = await apartmentRepository.findOne(apartmentId);
+
+  if (!updatingApartment) {
+    await apartmentRepository.update(apartmentId, { starList: [], joinList: [] });
+    updatingApartment = await apartmentRepository.findOne(apartmentId);
+  }
 
   if (!updatingApartment) {
     throw new NonExistApartmentError();
