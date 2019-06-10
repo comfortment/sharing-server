@@ -18,4 +18,8 @@ export class MongoOwnApartmentRepository implements OwnApartmentRepository {
   public async update(id: string, query: MongoOwnNanumModelQuery): Promise<void> {
     await this.collection.updateOne({ apartmentId: id }, { $set: query });
   }
+
+  public async insert(data: MongoOwnNanumModel): Promise<void> {
+    await this.collection.insert(data);
+  }
 }

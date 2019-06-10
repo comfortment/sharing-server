@@ -11,7 +11,7 @@ const starNanum = async (
   let updatingApartment = await apartmentRepository.findOne(apartmentId);
 
   if (!updatingApartment) {
-    await apartmentRepository.update(apartmentId, { starList: [], joinList: [] });
+    await apartmentRepository.insert({ apartmentId, starList: [], joinList: [] });
     updatingApartment = await apartmentRepository.findOne(apartmentId);
   }
 
