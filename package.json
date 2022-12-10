@@ -44,7 +44,7 @@
   "dependencies": {
     "aws-sdk": "^2.466.0",
     "dotenv": "^8.0.0",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "faker": "^4.1.0",
     "helmet": "^3.18.0",
     "lodash": "^4.17.11",
